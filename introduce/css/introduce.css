@@ -75,7 +75,6 @@ body{
 	height: 619px;
 	background: #000;
 	opacity: 0.1;
-	z-index: 9999;
 }
 .content_2 p{
 	height: 800px;
@@ -96,6 +95,7 @@ body{
     border-right: 100px solid transparent;  
     border-bottom: 50px solid skyblue;  
     /* opacity: 0.3; */
+    z-index: 999;
 }
 .six li:after{
 	content: "";  
@@ -108,6 +108,7 @@ body{
     border-right: 100px solid transparent;  
     border-top: 50px solid skyblue;  
     /* opacity: 0.3; */
+    z-index: 999;
 }
 
 .six li:nth-child(1){
@@ -119,6 +120,7 @@ body{
     left: 550px;
     top: 200px;
     float: left; 
+    z-index: 999;
 }
 
 .six li:nth-child(2){
@@ -130,6 +132,7 @@ body{
     left: 760px;
     top: 200px;
     float: left; 
+    z-index: 999;
 }
 .six li:nth-child(3){
 	width: 200px;  
@@ -139,7 +142,8 @@ body{
     position: absolute;
     left: 970px;
     top: 200px;
-    float: left; 
+    float: left;
+    z-index: 999;
 }
 .six li:nth-child(4){
 	width: 200px;  
@@ -149,7 +153,8 @@ body{
     position: absolute;
     left: 865px;
     top: 375px;
-    float: left; 
+    float: left;
+    z-index: 999;
 }
 .six li:nth-child(5){
 	width: 200px;  
@@ -160,4 +165,5 @@ body{
     left: 655px;
     top: 375px;
     float: left; 
+    z-index: 999;
 }
