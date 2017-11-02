@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<style>
+	*{margin: 0;padding:0;list-style:none;}
+	body{
+		perspective: 2000px;
+	}
+	.wrap{
+		height: 2000px;
+	}
+	.header{
+		height: 160px;
+		background: #fff;
+	}
+	.content_1{
+		position: relative;
+		transform-style: preserve-3d;
+	}
+	.content_1 p{
+		position: absolute;
+		left: 100px;
+		top: 200px;
+		width: 150px;
+		height: 150px;
+		border: 100px solid #fff;
+		border-radius: 50%;
+		background: #fff;
+	}
+	.content_1 h1{
+		height: 800px;
+		background: url(images/timg_3.jpg) 0 0 no-repeat;
+		background-size: 100% auto;
+		background-attachment: fixed;
+		opacity: 0.2;
+		position: relative;
+	}
+	.content_2{
+		background: #fff;
+		height: 800px;
+	}
+	.content_3{
+		height: 800px;
+		background: url(images/bg1.jpg) 0 0 no-repeat;
+		background-size: 100% auto;
+		background-attachment: fixed;
+		opacity: 0.2;
+	}
+	.content_4{
+		background: #fff;
+		height: 800px;
+	}
+	.circle1{
+		position: absolute;
+		left: 600px;
+		top: 300px;
+		width: 100px;
+		height: 100px;
+		border: 50px solid #D9DED4;
+		border-radius: 50%;
+		background: #D9DED4;
+		color: #fff;
+		font-size: 70px;
+		font-weight: bolder;
+		text-shadow: 2px 2px 2px rgba(220,220,220,1),-2px -2px 2px rgba(190,190,190,1);
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		transform: rotateY(0deg);
+		animation: move 1s linear 1s;
+		/* backface-visibility: hidden; */
+	}
+	@keyframes move{
+		0%{transform:scale(0)}
+		25%{transform: scale(0.4);}
+		50%{transform: scale(0.8);}
+		75%{transform:scale(1.2);}
+		100%{transform:scale(1)}
+	}
+	/* .circle1:hover{
+		transform: rotateY(40deg);
+	}
+	.circle1b{
+		position: absolute;
+		left: 600px;
+		top: 300px;
+		width: 100px;
+		height: 100px;
+		border: 50px solid #5C6971;
+		border-radius: 50%;
+		background: #5C6971;
+		color: #fff;
+		font-size: 70px;
+		font-weight: bolder;
+		text-shadow: 2px 2px 2px rgba(220,220,220,1),-2px -2px 2px rgba(190,190,190,1);
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		transform: rotateY(180deg);
+
+	} */
+	.circle2{
+		position: absolute;
+		left: 880px;
+		top: 170px;
+		width: 85px;
+		height:70px;
+		border: 30px solid #9CA3AD;
+		border-radius: 50%;
+		background: #9CA3AD;
+		font-size: 35px;
+		color: #fff;
+		font-weight: bolder;
+		text-shadow: 0px 2px 1px rgba(220,220,220,1),0px 4px 2px rgba(190,190,190,1),0px 6px 2px  rgba(160,160,160,1);
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		padding-top: 15px;
+		animation: move 1s linear 0.5s;
+	}
+	.circle3{
+		position: absolute;
+		left: 900px;
+		top: 420px;
+		width: 125px;
+		height: 95px;
+		border: 50px solid #90A7AF;
+		border-radius: 50%;
+		background: #90A7AF;
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		font-size: 45px;
+		color: #fff;
+		font-weight: bolder;
+		padding-top: 30px;
+		animation: move 1s linear 1s;
+	}
+	.circle4{
+		position: absolute;
+		left: 650px;
+		top: 590px;
+		width: 135px;
+		height: 105px;
+		border: 10px solid #5C6971;
+		border-radius: 50%;
+		background: #5C6971;
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		font-size: 35px;
+		color: #fff;
+		font-weight: bolder;
+		padding-top: 30px;
+		animation: move 1s linear 0.5s;
+	}
+	.circle5{
+		position: absolute;
+		left: 1200px;
+		top: 150px;
+		width: 150px;
+		height: 115px;
+		border: 50px solid #313737;
+		border-radius: 50%;
+		background: #313737;
+		box-shadow: 5px 5px 5px 2px rgba(20,20,20,0.9);
+		font-size: 50px;
+		color: #fff;
+		font-weight: bolder;
+		padding-top: 35px;
+		animation: move 1s linear 0.5s;
+	}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="header"></div>
+	<div class="content">
+		<div class="content_1">
+			<h1></h1>
+			<p></p>
+			<li class="circle1">JS</li>
+			<li class="circle1b">my js</li>
+			<li class="circle2">C/C++</li>
+			<li class="circle3">HTML</li>
+			<li class="circle4">MYSQL</li>
+			<li class="circle5">JAVA</li>
+		</div>
+		<div class="content_2"></div>
+		<div class="content_3"></div>
+		<div class="content_4"></div>
+	</div>
+	<div class="footer"></div>
+</div>
+</body>
+</html>

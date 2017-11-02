@@ -13,17 +13,17 @@ a{text-decoration: none;}
 /*==================Reset_End====================*/
 
 body{
-	background: #4F4F65;
+	background: #fff;
 }
 .wrap{
 	width: 1300px;
 	height: 3000px;
 	margin: 0 auto;
-	background:#8C8CA2;
+	background:#CDCDCD;
 }
 .header{
 	height: 100px;
-	background: #585899;
+	background: #E0D8D8;
 }
 .header ul:nth-child(1){
 	margin-right: 60px;
@@ -32,7 +32,7 @@ body{
 	float: left;
 }
 .header p{
-	color: #E9E5CC;
+	color: #000436;
 	font-size: 40px;
 	font-weight: bolder;
 }
@@ -42,14 +42,14 @@ body{
 .header li{
 	font-size: 36px;
 	font-weight: bolder;
-	color: #fff;
+	color: #000;
 	float: left;
 	margin-left: 60px;
 	margin-top: 45px;
 }
 .header li:hover{
 	margin-top: 35px;
-	border-bottom: 3px solid #fff;
+	border-bottom: 3px solid #000;
 	cursor: pointer;
 }
 .content_1{
