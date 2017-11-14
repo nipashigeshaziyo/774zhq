@@ -24,10 +24,13 @@ public class Compare extends HttpServlet {
 	        response.setContentType("text/html;utf-8");
 	        List<String> error = new ArrayList<String>();
 	        String name=request.getParameter("name");
-	        String[] kinds=request.getParameterValues("kind");
+	        String[] kinds=null;
+	        kinds=request.getParameterValues("kind");
 	        String kind="";
-	        for(int i=0;i<kinds.length;i++){
-	            kind +=kinds[i]+" ";
+	        if(kinds!=null){
+	            for(int i=0;i<kinds.length;i++){
+	                    kind +=kinds[i]+" ";
+	                }
 	        }
 	        String author=request.getParameter("author");
 	        Double discount = Double.parseDouble(request.getParameter("discount"));
@@ -58,29 +61,31 @@ public class Compare extends HttpServlet {
 	        
 	        try{
                     count = Integer.parseInt(request.getParameter("count"));
+                    if(count==0){
+                        error.add("请输入大于0的数。");
+                        flag=false;
+                    }else{
+                        error.add("");
+                    }
                 }catch(NumberFormatException e){
                     error.add("请输入一个数字。");
                     flag=false;
                 }
-	        if(count==0){
-	            error.add("请输入大于0的数。");
-	            flag=false;
-	        }else{
-	            error.add("");
-	        }
+	       
 	        
 	        try{
 	            price=Double.parseDouble(request.getParameter("price"));
+	            if(price<=0){
+	                error.add("请输入大于0的数。");
+	                flag=false;
+	            }else{
+	                error.add("");
+	            }
 	        }catch(NumberFormatException e ){
 	            error.add("请输入数字。");
 	            flag=false;
 	        }
-	        if(price<=0){
-	            error.add("请输入大于0的数。");
-	            flag=false;
-	        }else{
-	            error.add("");
-	        }
+	        
 	        if(introduce==null||"".equals(introduce)){
 	            error.add("请填写简介。");
 	            flag=false;
@@ -90,6 +95,7 @@ public class Compare extends HttpServlet {
 	        
 	        
 	        if(flag==false){
+	            
 	            request.setAttribute("error", error);
 	            request.getRequestDispatcher("BookRegister.jsp").forward(request, response);
 	        }else{

@@ -63,6 +63,10 @@
 		
 		margin:10px 50px 0;
 	}
+	.block span{
+		font-size:12px;
+		color:red;
+	}
 	textarea{
 		font-size:14px;
 	}
@@ -80,34 +84,28 @@
 				<h3><a href="BookList.jsp">库存列表</a></h3>
 			</div>
 			<div class="show">
+				<%! %>
 				<%	
-					
 					List<String> error= new ArrayList<String>();
 					error = (List<String>)request.getAttribute("error");
-					if(error==null){
-					    
-					}else{
-						for(String i:error){%>
-						    <h1><%response.getWriter().write(i);%></h1>
-						<%}
-					}
+					
 				%>
 				<form class="block" action="<%=request.getContextPath()%>/Compare" method="post">
-					书名：<input class="ip" type="text" name="name" /><br/>
+					书名：<input class="ip" type="text" name="name" value="${param.name }"/><span><%if(error!=null)%><%=error.get(0)%></span><br/>
 					类别：<input type="checkbox" name="kind" value="科学" />科学
 					<input type="checkbox" name="kind" value="教育" />教育
 					<input type="checkbox" name="kind" value="文学" />文学
 					<input type="checkbox" name="kind" value="生活" />生活
-					<input type="checkbox" name="kind" value="其他" />其他<br/>
-					作者：<input class="ip" type="text" name="author" /> <br/>
+					<input type="checkbox" name="kind" value="其他" />其他<span><%if(error!=null)%><%=error.get(1)%></span><br/>
+					作者：<input class="ip" type="text" name="author" value="${param.author }"/><span><%if(error!=null)%><%=error.get(2)%></span><br/>
 					折扣：<input type="radio" name="discount" value="1.0" checked="checked">全价
 					<input type="radio" name="discount" value="0.9">九折
 					<input type="radio" name="discount" value="0.8">八折
 					<input type="radio" name="discount" value="0.7">七折
 					<input type="radio" name="discount" value="0.6">六折<br/>
-					价格：<input class="ip" type="text" name="price"><br/>
-					数量：<input class="ip" type="text" name="count"><br/>
-					简介：<textarea cols="30" rows="3" name="introduce"></textarea><br/>
+					价格：<input class="ip" type="text" name="price" value="${param.price }"><span><%if(error!=null)%><%=error.get(3)%></span><br/>
+					数量：<input class="ip" type="text" name="count" value="${param.count }"><span><%if(error!=null)%><%=error.get(4)%></span><br/>
+					简介：<textarea cols="30" rows="3" name="introduce" value="${param.introduce }"></textarea><span><%if(error!=null)%><%=error.get(5)%></span><br/>
 					<input class="bottom" type="submit" value="提交">
 					<input class="bottom" type="reset" value="重置">
 				</form>
