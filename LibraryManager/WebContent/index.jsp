@@ -46,6 +46,7 @@
 	.show{
 		width:680px;
 		float:left;
+		
 	}
 	.text{
 		margin:0 auto;
@@ -70,7 +71,7 @@
 			<div class="left_content">
 				<h3><a href="index.jsp">首页</a></h3>
 				<h3><a href="BookRegister.jsp">库存登记</a></h3>
-				<h3><a href="BookList.jsp">库存列表</a></h3>
+				<h3><a href="<%=request.getContextPath()%>/Pagechange">库存列表</a></h3>
 			</div>
 			<div class="show">
 				<div class="text">

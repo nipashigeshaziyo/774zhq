@@ -200,4 +200,92 @@ public class LibraryDao {
             }
         }
     }
+    
+    public static List<Book> QueryByPage(int currentPage,int PageNum){
+        ComboPooledDataSource  ds= new ComboPooledDataSource();
+        Connection conn = null;
+        PreparedStatement ps=null;
+        ResultSet rs = null;
+        List<Book> list = new ArrayList<Book>();
+        try {
+            conn=ds.getConnection();
+            String sql = "select * from book limit "+(currentPage-1)*PageNum+","+PageNum+"";
+            ps =conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                int id=rs.getInt(1);
+                String name = rs.getString(2);
+                String kind = rs.getString(3);
+                String author= rs.getString(4);
+                double discount = rs.getDouble(5);
+                double price = rs.getDouble(6);
+                int count = rs.getInt(7);
+                String introduce = rs.getString(8);
+                Book book = new Book(id,name,kind,author,discount,price,count,introduce);
+                list.add(book);
+            }
+            return list;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally{
+            try {
+                if(rs!=null)
+                rs.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            try {
+                if(ps!=null)
+                ps.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            try {
+                if(conn!=null)
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        throw new RuntimeException("≤È’“ ß∞‹");
+    }
+    public static int PageCount(){
+        ComboPooledDataSource  ds= new ComboPooledDataSource();
+        Connection conn = null;
+        PreparedStatement ps=null;
+        ResultSet rs =null;
+        int count=0;
+        try {
+            conn=ds.getConnection();
+            String sql = "select count(*) from book";
+            ps =conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+            return count;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally{
+            try {
+                if(ps!=null)
+                ps.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            try {
+                if(conn!=null)
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        throw new  RuntimeException("≤È’“ ß∞‹");
+    }
 }

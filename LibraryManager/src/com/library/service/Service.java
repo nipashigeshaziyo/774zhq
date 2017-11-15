@@ -27,4 +27,10 @@ public class Service {
     public static void getupdate(Book book,int id){
         LibraryDao.update(book, id);
     }
+    public static List<Book> getQueryByPage(int currentPage,int PageNum){
+        return LibraryDao.QueryByPage(currentPage, PageNum);
+    }
+    public static int getCount(){
+        return LibraryDao.PageCount();
+    }
 }

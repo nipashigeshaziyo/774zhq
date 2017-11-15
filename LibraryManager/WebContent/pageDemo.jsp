@@ -4,6 +4,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.library.domain.Book" %>
+<%@ page import="com.library.domain.Page" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,6 +52,7 @@
 		width:680px;
 		float:left;
 		padding-top:50px;
+		position:relative;
 	}
 	.show table{
 		border-collapse:collapse;
@@ -74,6 +77,11 @@
 	.show a:active{
 		color:#210CBF;
 	}
+	center{
+		position:absolute;
+		left:240px;
+		bottom:-100px;
+	}
 </style>
 </head>
 <body>
@@ -85,7 +93,7 @@
 			<div class="left_content">
 				<h3><a href="index.jsp">首页</a></h3>
 				<h3><a href="BookRegister.jsp">库存登记</a></h3>
-				<h3><a href="BookList.jsp">库存列表</a></h3>
+				<h3><a href="<%=request.getContextPath()%>/Pagechange">库存列表</a></h3>
 			</div>
 			<div class="show">
 				<table>
@@ -99,8 +107,8 @@
 					</tr>
 					
 					<% 
-						List<Book> list = Service.getQuery();
-						
+						Page p = (Page)request.getAttribute("page");
+						List<Book> list = p.getList();
 						if(list!=null){
 						    for(Book i : list){
 					%>
@@ -120,6 +128,24 @@
 						    }
 						}
 					%>
+					<center>
+						<c:if test="${page.currentPage==1}">
+							<a>首页</a>
+							<a>上一页</a>
+						</c:if>	
+						<c:if test="${page.currentPage!=1}">
+							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=1&PageNum=${page.pageNum}">首页</a>
+							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=${page.currentPage-1}&PageNum=${page.pageNum}">上一页</a>
+						</c:if>
+						<c:if test="${page.currentPage==page.totalPage }">						
+							<a>下一页</a>
+							<a>尾页</a>
+						</c:if>
+						<c:if test="${page.currentPage!=page.totalPage}">						
+							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=${page.currentPage+1}&PageNum=${page.pageNum}">下一页</a>
+							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=${page.totalPage}&PageNum=${page.pageNum}">尾页</a>
+						</c:if>
+					</center>
 				</table>
 			</div>
 		</div>
