@@ -27,7 +27,7 @@ public class deleteBook extends HttpServlet {
 	        e.printStackTrace();
 	    }    
 	    Service.getDelete(id);
-	    request.getRequestDispatcher("pageDemo.jsp").forward(request, response);;
+	    request.getRequestDispatcher("pageDemo.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

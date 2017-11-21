@@ -105,23 +105,23 @@
 					<td>数量</td>
 					<td>操作</td>
 					</tr>
-					
 					<% 
+						int num=0;
 						Page p = (Page)request.getAttribute("page");
 						List<Book> list = p.getList();
 						if(list!=null){
-						    for(Book i : list){
+						    for(int i=0;i<list.size();i++){
 					%>
 					<tr>
-						<td><%=i.getBid() %></td>
-						<td><%=i.getName() %></td>
-						<td><%=i.getAuthor()%></td>
-						<td><%=i.getPrice()%></td>
-						<td><%=i.getCount()%></td>
+						<td><%=i+1%></td>
+						<td><%=list.get(i).getName() %></td>
+						<td><%=list.get(i).getAuthor()%></td>
+						<td><%=list.get(i).getPrice()%></td>
+						<td><%=list.get(i).getCount()%></td>
 						<td>
 						
-						<a href="showBook.jsp?id=<%=i.getBid() %>">详情</a>&nbsp&nbsp
-						<a id="delete" onclick="return del()" href="deleteBook?id=<%=i.getBid() %>">删除</a>
+						<a href="showBook.jsp?id=<%=list.get(i).getBid() %>">详情</a>&nbsp&nbsp
+						<a id="delete" onclick="return del()" href="deleteBook?id=<%=list.get(i).getBid() %>">删除</a>
 						</td>
 					</tr>
 					<%
@@ -135,7 +135,8 @@
 						</c:if>	
 						<c:if test="${page.currentPage!=1}">
 							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=1&PageNum=${page.pageNum}">首页</a>
-							<a href="<%=request.getContextPath()%>/Pagechange?currentPage=${page.currentPage-1}&PageNum=${page.pageNum}">上一页</a>
+							<a href="<%=request.getContextPath()%>/P
+							agechange?currentPage=${page.currentPage-1}&PageNum=${page.pageNum}">上一页</a>
 						</c:if>
 						<c:if test="${page.currentPage==page.totalPage }">						
 							<a>下一页</a>
