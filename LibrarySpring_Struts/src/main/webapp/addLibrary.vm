@@ -1,0 +1,86 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<head>
+<title>足球联赛管理</title>
+<style>
+#parse("model_css")
+.show{
+		width:530px;
+		float:left;
+		padding-top:60px;
+		padding-left:300px;
+		font-size:20px;
+	}
+	.block input{
+		margin-top:20px;
+		font-size:16px;
+	}
+	.block .ip{
+		width:200px;
+		height:25px;
+	}
+	.block .bottom{
+		
+		margin:10px 50px 0;
+	}
+	.block span{
+		font-size:12px;
+		color:red;
+	}
+	textarea{
+		font-size:14px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		#parse("model_banner")
+		<div class="content">
+			#parse("model_left")
+			<div class="show">
+					<div class="text">
+						<form class="block" action="addAction" method="post">
+							书名：<input class="ip" type="text" name="name" value="$!{request.getParameter("name")}"/>
+							<font color="red">
+							<s:fielderror>
+							<s:param>name</s:param>
+							</s:fielderror>
+							</font>
+							<br/>
+							#set($kind_1=["科学","教育","文学","生活","其他"])
+							类别：
+							#foreach($k in $kind_1)
+								<input type="checkbox" name="kind" value="$k" 
+									#if($!{request.getAttribute("kind")})
+										#if(${request.getAttribute("kind").indexOf($k)}!=-1)
+											checked="checked"
+										#end
+									#end
+								/>$k
+							#end
+							<span>$!{error[1]}</span><br/>
+							作者：<input class="ip" type="text" name="author" value="$!{request.getParameter("author")}"/><br/>
+							#set($discount_1={"全价":"1","九折":"0.9","八折":"0.8","七折":"0.7","六折":"0.6"})
+							折扣：
+							#foreach($d in $discount_1)
+								<input type="radio" name="discount" value="$d"
+								#if($!{request.getParameter("discount")})
+									#if($!{request.getParameter("discount").equals($d)})
+										checked="checked"
+									#end
+								#end
+								>$d
+							#end
+							<br/>
+							价格：<input class="ip" type="text" name="price" value="$!{request.getParameter("price")}"><br/>
+							数量：<input class="ip" type="text" name="count" value="$!{request.getParameter("count")}"><br/>
+							简介：<textarea cols="30" rows="3" name="introduce" value="$!{request.getParameter("introduce")}" ></textarea><br/>
+							<input class="bottom" type="submit" value="提交">
+							<input class="bottom" type="reset" value="重置">
+						</form>
+					</div>
+				</div>
+		</div>
+	</div>
+</body>
+</html>

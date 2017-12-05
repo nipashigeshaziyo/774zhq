@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>足球联赛管理</title>
+<style>
+#parse("model_css")
+</style>
+</head>
+<body>
+	<div class="wrap">
+		#parse("model_banner")
+		<div class="content">
+			#parse("model_left")
+			<div class="right">
+			</div>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+</body>
+</html>

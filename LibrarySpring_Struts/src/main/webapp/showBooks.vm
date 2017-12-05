@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>图书管理系统</title>
+<style>
+#parse("model_css")
+.show{
+		width:680px;
+		float:left;
+		padding-top:50px;
+		margin-left:100px;
+	}
+	.show table{
+		border-collapse:collapse;
+		cellpadding:5px;
+		
+	}
+	.show td{
+		border:1px solid #000;
+		width:110px;
+		text-align:center;
+	}
+	.show a:link{
+		text-decoration:none;
+		color:#210CBF;
+	}
+	.show a:hover{
+		color:red;
+	}
+	.show a:visited{
+		color:#210CBF;
+	}
+	.show a:active{
+		color:#210CBF;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		#parse("model_banner")
+		<div class="content">
+			#parse("model_left")
+			<div class="show">
+				<table>
+					<tr>
+					<td>序号</td>
+					<td>书名</td>
+					<td>作者</td>
+					<td>价格</td>
+					<td>数量</td>
+					<td>操作</td>
+					</tr>
+					#foreach($l in $Books)
+						<tr>
+							<td>$!{l.bid}</td>
+							<td>$!{l.name}</td>
+							<td>$!{l.author}</td>
+							<td>$!{l.price}</td>
+							<td>$!{l.count}</td>
+							<td>
+							<a href="showBookAction?bid=${l.bid}">详情</a>&nbsp&nbsp
+							<a id="delete" onclick="return del()" href="deleteBookAction?bid=${l.bid}">删除</a>
+							</td>
+						</tr>
+					#end
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	function del(){
+		var i=window.confirm("您确定删除吗");
+		return i;
+	} 
+	</script>
+</html>
