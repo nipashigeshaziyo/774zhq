@@ -75,9 +75,10 @@
 		</div>
 		<div class="content">
 			<div class="left">
-				<a href="#">首页</a><br/>
+				<a href="index.vm">首页</a><br/>
 				<a href="addLibrary.jsp">入库登记</a><br/>
-				<a href="bookListAction">库存列表</a>
+				<a href="bookListAction">库存列表</a><br/>
+				<a href="showBookActionByPage">分页查询</a>
 			</div>
 			<div class="show">
 				<h1>书名：${book.name}</h1><br/>

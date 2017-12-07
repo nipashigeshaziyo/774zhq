@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.jnmd.domain.Book;
+import com.jnmd.domain.Page;
 
 @Repository
 public class BookDao {
@@ -73,5 +74,18 @@ public class BookDao {
             
         });
     }
-    
+    public List<Book> queryByPage(final Page page){
+        return hibernateTemplate.execute(new HibernateCallback() {
+
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException {
+                Query query = session.createQuery("from Book");
+                query.setFirstResult((page.getCurrentNum()-1)*page.getPageNum());
+                System.out.println(page.getPageNum());
+                query.setMaxResults(page.getPageNum());
+                List<Book> list = query.list();
+                return list;
+            }
+        });
+    }
 }

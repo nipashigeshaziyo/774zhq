@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jnmd.dao.BookDao;
 import com.jnmd.domain.Book;
+import com.jnmd.domain.Page;
 
 @Service
 @Transactional
@@ -45,5 +46,8 @@ public class BookService {
         
         return bookdao.queryBook(bid);
         
+    }
+    public List<Book> queryByPage(Page page){
+        return bookdao.queryByPage(page);
     }
 }
